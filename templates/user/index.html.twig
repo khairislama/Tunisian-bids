@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User profile{% endblock %}
+
+{% block body %}
+
+<div class="profile-card">
+    <div class="image-container">
+        
+        <img class="img-fluid img-thumbnail rounded-circle" style="width: 400px;  height:400px" src="{{ vich_uploader_asset(user, 'imageFile') }}"></img>
+        <div class="title mt-3">
+            <h1>{{ user.prenom }} {{ user.nom }}</h1>
+        </div>
+    </div>
+    <div class="main-container">
+        {% if user.roles == "ROLE_ADMIN" %}
+            <p style="font-weight: 700; font-size:30px" class="text-danger text-center">ADMIN</p>
+        {% endif %}
+        <p><i class="fa fa-envelope info"></i>{{ user.email }}</p>
+        <p><i class="fas fa-calendar-alt info"></i>Depuis : xx/xx/xxxx</p>
+        <hr>
+        {% if app.user == user %}
+        <a class="btn btn-primary mr-3" href="/my/products">Mes produits</a>
+        <a href="/my/wishlist" class="btn btn-primary mr-3">Ma liste d'envie</a>
+        <a href="/user/modify" class="btn btn-primary"><i class="fas fa-user-edit"></i>Modifier</a>
+        {% else %}
+        <a href="/user/{{user.id}}/products" class="btn btn-primary btn-block">Les produits de {{ user.prenom }}</a>
+        <a href="#" class="btn btn-primary btn-block">Envoyer un message</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

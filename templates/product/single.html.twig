@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produit {{ product.name }}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>{{ product.name }} By {{ product.user.email }}</h1>
+    <img class="img-fluid img-thumbnail rounded" 
+        src="{{ vich_uploader_asset(product, 'imageFile') }}">
+    </img>    
+</div>
+{% endblock %}

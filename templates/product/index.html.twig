@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produits{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <section id="header" class="jumbotron text-center">
+        <h3 class="display-3 pt-0 text-info kiki">Parcourir les produits</h3>
+        <hr class="my-3">
+        <p class="lead text-light kiki" style="font-weight:600 "><strong>vous avez des produits que vous n'utiliser plus ou vous <br>
+        voulez les vendre en echère! Tunisian-bids met à votre disposition le meilleur systèm d'enchère <br>
+        disponible. il suffit simplement de bien détailler le produit et mettre un prix de départ <br>
+        et on s'occupe du reste pour vous</strong></p>
+        <a class="btn btn-primary btn-lg" href="/product/add">Proposer un nouveau produit ></a>
+    </section>
+    {% if products %}
+    <div class="row">
+    {% for p in products %}
+    {% if p.status=='verified' %}
+        <div class="col-4">
+            <div class="card">
+                <a href="/product/{{ p.id }}"> 
+                    <img style="height:300px" 
+                        class="img-fluid img-thumbnail" 
+                        src="{{ vich_uploader_asset(p, 'imageFile') }}">
+                    </img> 
+                </a>            
+                <div class="card-body">
+                    {% if p.name|length < 28 %}
+                    <span style="font-size: 18px; font-weight: 600" 
+                        class="bold">{{ p.name }}
+                    </span>
+                    {% else %}
+                    <span style="font-size: 18px; font-weight: 600" 
+                        class="bold">{{ p.name[0:28] }}...
+                    </span>
+                    {% endif %}
+                    <br><hr>
+                    <span>{{ p.price }} TND 
+                        <a href="/product/{{p.id}}" 
+                            class="float-right">Voir plus..>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center display-4">aucun produit en cours d'enchère</div>
+    {% endif %}
+</div>
+{% endblock %}

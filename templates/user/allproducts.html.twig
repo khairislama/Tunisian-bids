@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin | produits{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center border-bottom border-dark">Tout les produits</h1>
+    
+    <div class="row">
+        <div class="col-1">
+            <p class="text-center border-bottom border-dark">ID</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center border-bottom border-dark">Prenom et nom</p>
+        </div>
+        <div class="col-5">
+            <p class="text-center border-bottom border-dark">Email</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center border-bottom border-dark">Role</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center border-bottom border-dark">Supprimer</p>
+        </div>
+    <hr>
+    {% for p in products %}
+        <div class="col-1">
+            <p class="text-center">{{ p.id }}</p>
+        </div>
+        <div class="col-2">            
+            <a class="text-center" href="/product/{{ p.id }}">{{ p.name }}</a> 
+        </div>
+        <div class="col-5">
+            <p>{{ p.price }}</p>
+        </div>
+        <div class="col-2">
+            <p>Hi there</p>
+        </div>  
+        <div class="col-2">
+            <p>Hi there 2</p>
+        </div>        
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

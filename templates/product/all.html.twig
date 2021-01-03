@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin | users{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center border-bottom border-dark">All users</h1>
+    
+    <div class="row">
+        <div class="col-1">
+            <p class="text-center border-bottom border-dark">ID</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center border-bottom border-dark">Prenom et nom</p>
+        </div>
+        <div class="col-5">
+            <p class="text-center border-bottom border-dark">Email</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center border-bottom border-dark">Role</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center border-bottom border-dark">Supprimer</p>
+        </div>
+    <hr>
+    {% for u in users %}
+        <div class="col-1">
+            <p class="text-center">{{ u.id }}</p>
+        </div>
+        <div class="col-2">            
+            <a class="text-center" href="/user/{{ u.id }}">{{ u.prenom }} {{ u.nom }}</a> 
+        </div>
+        <div class="col-5">
+            <p>{{ u.email }}</p>
+        </div>
+        <div class="col-2">
+            {% if u.roles[0]=='ROLE_ADMIN' %}
+                <p class="text-danger text-center" style="font-weight: 600" >ADMIN</p>
+            {% else %}
+                <p style="font-weight: 600" class="text-center">user</p>
+            {% endif %}
+        </div>  
+        <div class="col-2">
+            {% if u.roles[0]=='ROLE_USER' %}
+            <a href="/admin/user/{{ u.id }}/ban" class="text-danger text-center">Supprimer</a>
+            {% endif %}
+        </div>        
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

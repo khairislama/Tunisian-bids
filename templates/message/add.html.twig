@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container mt-5">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <p class="text-warning">Ce produit doit etre vérifier par un admin</p>
+</div>
+
+{% endblock %}

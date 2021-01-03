@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Tcikets!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for t in tickets %}
+            you have a ticket
+        {% endfor %}
+    </div>
+{% endblock %}

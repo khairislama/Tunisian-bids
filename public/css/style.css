@@ -1,0 +1,38 @@
+footer.page-footer{
+    color: #d3d3d3;
+    background-color: #3c3939;
+}
+
+#header{
+    background: url("../uploads/images/enchere.jpg") center center / cover no-repeat;
+}
+
+h3.kiki, p.kiki, div.kiki{
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.image-produit {
+    height: 120px !important ;
+}
+
+.profile-card {
+    width: 500px;
+    margin: 10% auto auto auto;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+}
+
+.image-container {
+    position: relative;
+    text-align: center;
+    border-radius: 80px;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+.info {
+    color: #4b4fe2;
+    margin-right: 16px;
+}
